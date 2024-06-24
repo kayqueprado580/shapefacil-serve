@@ -1,0 +1,44 @@
+{
+	"treinos": [
+		{
+			"nome": "Supino Reto",
+			"series": 3,
+			"repeticoes": 12,
+			"descanso": "60 segundos",
+			"midia": {
+				"tipo": "video",
+				"caminho": "https://exemplo.com/videos/supino_reto.mp4"
+			}
+		},
+		{
+			"nome": "Agachamento Livre",
+			"series": 4,
+			"repeticoes": 10,
+			"descanso": "90 segundos",
+			"midia": {
+				"tipo": "gif",
+				"caminho": "https://exemplo.com/gifs/agachamento_livre.gif"
+			}
+		},
+		{
+			"nome": "Rosca Direta",
+			"series": 3,
+			"repeticoes": 15,
+			"descanso": "45 segundos",
+			"midia": {
+				"tipo": "imagem",
+				"caminho": "https://exemplo.com/imagens/rosca_direta.jpg"
+			}
+		},
+		{
+			"nome": "Remada Curvada",
+			"series": 3,
+			"repeticoes": 12,
+			"descanso": "60 segundos",
+			"midia": {
+				"tipo": "video",
+				"caminho": "https://exemplo.com/videos/remada_curvada.mp4"
+			}
+		}
+	]
+}

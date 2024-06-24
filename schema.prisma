@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id           Int            @id @default(autoincrement())
+  uid          String         @unique @default(uuid())
+  nome         String?
+  contato      String?
+  documento    String?
+  perfil       String
+  email        String         @unique
+  usuario      String         @unique
+  senha        String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  PerfilAcesso PerfilAcesso[]
+
+  @@map("usuario")
+}
+
+model PerfilAcesso {
+  id            Int      @id @default(autoincrement())
+  usuario       Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId     Int      @unique
+  perfil        String
+  acessoJson    String
+  createdAtUser Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("perfil_acesso")
+}
+
+model Nutricionista {
+  id         Int      @id @default(autoincrement())
+  usuarioId  Int?     @unique
+  usrCriouId Int?
+  alunos     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("nutricionista")
+}
+
+model Treinador {
+  id         Int      @id @default(autoincrement())
+  usuarioId  Int?     @unique
+  usrCriouId Int?
+  alunos     String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("treinador")
+}
+
+model Aluno {
+  id              Int       @id @default(autoincrement())
+  usuarioId       Int?      @unique
+  treinadorId     Int?
+  nutricionistaId Int?
+  usrCriouId      Int?
+  peso            String?
+  altura          String?
+  porcGordura     String?
+  porcMassaMagra  String?
+  medidas         String?
+  dataAvaliacao   DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@map("aluno")
+}
+
+model HistoricoAluno {
+  id              Int       @id @default(autoincrement())
+  alunoId         Int?
+  treinadorId     Int?
+  nutricionistaId Int?
+  peso            String?
+  altura          String?
+  porcGordura     String?
+  porcMassaMagra  String?
+  medidas         String?
+  dataAvaliacao   DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@map("historico_aluno")
+}
+
+model Dieta {
+  id              Int      @id @default(autoincrement())
+  usuarioId       Int?
+  alunoId         Int?
+  nutricionistaId Int?
+  nome            String
+  descricao       String?
+  tipo            String
+  periodo         String
+  refeicoesJson   String
+  totalCalorias   String?
+  totalProteinas  String?
+  totalGordura    String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("dieta")
+}
+
+model Treino {
+  id             Int      @id @default(autoincrement())
+  usuarioId      Int?
+  alunoId        Int?
+  treinadorId    Int?
+  nome           String
+  descricao      String?
+  tipo           String
+  PeriodoTreino  String
+  exerciciosJson String
+  intensidade    String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("treino")
+}
+
+model Avaliacao {
+  id              Int      @id @default(autoincrement())
+  usuarioId       Int?
+  alunoId         Int?
+  treinadorId     Int?
+  nutricionistaId Int?
+  dietaId         Int?
+  treinoId        Int?
+  nome            String?
+  tipo            String
+  nota            Int
+  descricao       String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("avaliacao")
+}

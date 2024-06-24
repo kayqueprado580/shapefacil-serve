@@ -1,0 +1,87 @@
+[{
+    "usuarioId": 16,
+    "treinadorId": 1,
+    "nutricionistaId": 1,
+    "peso": "75",
+    "altura": "180cm",
+    "porcGordura": "20%",
+    "porcMassaMagra": "70%",
+    "medidas": {
+        "medidas": {
+            "altura_cm": 180,
+            "peso_kg": 75,
+            "torax_cm": 100,
+            "cintura_cm": 85,
+            "quadril_cm": 95,
+            "braco_direito_cm": 35,
+            "braco_esquerdo_cm": 34,
+            "coxa_direita_cm": 55,
+            "coxa_esquerda_cm": 54,
+            "panturrilha_direita_cm": 38,
+            "panturrilha_esquerda_cm": 37
+        }
+    }
+},
+
+{
+    "usuario": {
+        "nome": "kayque prado",
+        "contato": "(11) 9 9311-8855",
+        "documento": "462.530.478-41",
+        "perfil": "Aluno",
+        "email": "aluno@gmail.com",
+        "usuario": "aluno",
+        "senha": "Kayque@321"
+    },
+    "perfilAcesso": {
+        "perfil": "Aluno",
+        "acessoJson": {
+            "Aluno": {
+                "permissions": {
+                    "treinos": [
+                        "listar"
+                    ],
+                    "feedback": [
+                        "listar"
+                    ],
+                    "avaliacao": [
+                        "listar"
+                    ],
+                    "perfil": {
+                        "editar_proprio": [
+                            "nome",
+                            "documento",
+                            "contato",
+                            "email",
+                            "senha"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "aluno": {
+        "treinadorId": 1,
+        "nutricionistaId": 1,
+        "peso": "75",
+        "altura": "180cm",
+        "porcGordura": "20%",
+        "porcMassaMagra": "70%",
+        "medidas": {
+            "medidas": {
+                "altura_cm": 180,
+                "peso_kg": 75,
+                "torax_cm": 100,
+                "cintura_cm": 85,
+                "quadril_cm": 95,
+                "braco_direito_cm": 35,
+                "braco_esquerdo_cm": 34,
+                "coxa_direita_cm": 55,
+                "coxa_esquerda_cm": 54,
+                "panturrilha_direita_cm": 38,
+                "panturrilha_esquerda_cm": 37
+            }
+        }
+    }
+}
+]

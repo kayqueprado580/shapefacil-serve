@@ -1,0 +1,114 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model Usuario {
+    id              Int            @id @default(autoincrement())
+    uid             String         @unique @default(uuid())
+    nome            String?
+    contato         String?
+    documento       String?
+    perfil          String //Nutricionista, Treinador, Aluno e Administrador
+    PerfilAcesso    PerfilAcesso[]
+    email           String         @unique
+    usuario         String         @unique
+    senha           String
+    isAdmnistrador  Boolean        @default(false)
+    isNutricionista Boolean        @default(false)
+    isTreinador     Boolean        @default(false)
+    isAluno         Boolean        @default(false)
+    createdAt       DateTime       @default(now())
+    updatedAt       DateTime       @updatedAt
+
+    @@map("usuario")
+}
+
+model PerfilAcesso {
+    id            Int      @id @default(autoincrement())
+    usuario       Usuario? @relation(fields: [usuarioID], references: [id])
+    usuarioID     Int      @unique
+    perfil        String
+    acessoJson    String
+    createdAtUser Int
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+
+    @@map("perfil_acesso")
+}
+
+model HistoricoAluno {
+    id              Int       @id @default(autoincrement())
+    alunoID         Int
+    usuarioID       Int?
+    treinadorID     Int?
+    nutricionistaID Int?
+    peso            String?
+    altura          String?
+    porcGordura     String?
+    porcMassaMagra  String?
+    medidas         String?
+    dataAvaliacao   DateTime?
+    createdAt       DateTime  @default(now())
+    updatedAt       DateTime  @updatedAt
+
+    @@map("historico_aluno")
+}
+
+model Dieta {
+    id              Int      @id @default(autoincrement())
+    usuarioID       Int
+    alunoID         Int?
+    nutricionistaID Int?
+    nome            String
+    descricao       String?
+    tipo            String
+    periodo         String
+    json            String
+    totalCalorias   String?
+    totalProteinas  String?
+    totalGordura    String?
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    @@map("dieta")
+}
+
+model Treino {
+    id            Int      @id @default(autoincrement())
+    usuarioID     Int
+    alunoID       Int?
+    treinadorID   Int?
+    nome          String
+    descricao     String?
+    tipo          String
+    PeriodoTreino String
+    json          String
+    intensidade   String?
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+
+    @@map("treino")
+}
+
+model Avaliacao {
+    id              Int      @id @default(autoincrement())
+    usuarioID       Int
+    alunoID         Int?
+    treinadorID     Int?
+    nutricionistaID Int?
+    dietaID         Int?
+    treinoID        Int?
+    nome            String
+    tipo            String?
+    nota            Int
+    descricao       String?
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    @@map("avaliacao")
+}

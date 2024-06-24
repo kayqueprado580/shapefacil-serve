@@ -1,0 +1,32 @@
+{
+    "Treinador": {
+        "acessos": {
+            "treino": [
+                "criar",
+                "editar",
+                "listar"
+            ],
+            "lista_alunos": [
+                "listar"
+            ],
+            "feedback": [
+                "criar",
+                "editar",
+                "listar"
+            ],
+            "avaliacao": [
+                "criar",
+                "editar",
+                "listar"
+            ],
+            "perfil": {
+                "editar_proprio": [
+                    "nome",
+                    "documento",
+                    "contato",
+                    "email"
+                ]
+            }
+        }
+    }
+}
