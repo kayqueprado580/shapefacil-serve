@@ -1,0 +1,27 @@
+{
+	"refeicoes": [{
+			"nome": "Café da Manhã",
+			"carboidratos": 30,
+			"proteinas": 15,
+			"gorduras": 10
+		},
+		{
+			"nome": "Almoço",
+			"carboidratos": 50,
+			"proteinas": 25,
+			"gorduras": 20
+		},
+		{
+			"nome": "Jantar",
+			"carboidratos": 40,
+			"proteinas": 20,
+			"gorduras": 15
+		},
+		{
+			"nome": "Lanche da Tarde",
+			"carboidratos": 20,
+			"proteinas": 10,
+			"gorduras": 5
+		}
+	]
+}

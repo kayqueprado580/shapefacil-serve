@@ -1,0 +1,28 @@
+{
+    "Aluno": {
+        "acessos": {
+            "dieta": [
+                "listar",
+                "marcar"
+            ],
+            "treino": [
+                "listar",
+                "marcar"
+            ],
+            "feedback": [
+                "listar"
+            ],
+            "avaliacao": [
+                "listar"
+            ],
+            "perfil": {
+                "editar_proprio": [
+                    "nome",
+                    "documento",
+                    "contato",
+                    "email"
+                ]
+            }
+        }
+    }
+}

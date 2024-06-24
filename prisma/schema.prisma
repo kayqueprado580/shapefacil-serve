@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id           Int            @id @default(autoincrement())
+  uid          String         @default(uuid())
+  nome         String
+  contato      String
+  documento    String
+  perfil       String
+  email        String         @unique
+  usuario      String         @unique
+  senha        String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  PerfilAcesso PerfilAcesso[]
+  Especialista Especialista[]
+  Aluno        Aluno[]
+  Dieta        Dieta[]
+  Treino       Treino[]
+  Avaliacao    Avaliacao[]
+
+  @@map("usuario")
+}
+
+model PerfilAcesso {
+  id         Int      @id @default(autoincrement())
+  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId  Int      @unique
+  perfil     String
+  acessoJson String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("perfil_acesso")
+}
+
+model Especialista {
+  id             Int              @id @default(autoincrement())
+  usuario        Usuario          @relation(fields: [usuarioId], references: [id])
+  usuarioId      Int
+  usrCriouId     Int
+  tipo           String
+  alunosJson     String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  Aluno          Aluno[]
+  HistoricoAluno HistoricoAluno[]
+  Dieta          Dieta[]
+  Treino         Treino[]
+  Avaliacao      Avaliacao[]
+
+  @@map("especialista")
+}
+
+model Aluno {
+  id             Int              @id @default(autoincrement())
+  usuario        Usuario          @relation(fields: [usuarioId], references: [id])
+  usuarioId      Int
+  especialista   Especialista?    @relation(fields: [especialistaId], references: [id])
+  especialistaId Int
+  usrCriouId     Int
+  peso           String
+  altura         String
+  porcGordura    String
+  porcMassaMagra String
+  medidas        String
+  alunosJson     String
+  dataAvaliacao  DateTime
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  HistoricoAluno HistoricoAluno[]
+  Dieta          Dieta[]
+  Treino         Treino[]
+  Avaliacao      Avaliacao[]
+
+  @@map("aluno")
+}
+
+model HistoricoAluno {
+  id             Int           @id @default(autoincrement())
+  aluno          Aluno?        @relation(fields: [alunoId], references: [id])
+  alunoId        Int
+  especialista   Especialista? @relation(fields: [especialistaId], references: [id])
+  especialistaId Int
+  peso           String
+  altura         String
+  porcGordura    String
+  porcMassaMagra String
+  medidas        String
+  alunosJson     String
+  dataAvaliacao  DateTime
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@map("historico_aluno")
+}
+
+model Dieta {
+  id             Int           @id @default(autoincrement())
+  usuario        Usuario       @relation(fields: [usuarioId], references: [id])
+  usuarioId      Int
+  aluno          Aluno?        @relation(fields: [alunoId], references: [id])
+  alunoId        Int
+  especialista   Especialista? @relation(fields: [especialistaId], references: [id])
+  especialistaId Int
+  nome           String
+  descricao      String
+  tipo           String
+  periodo        String
+  refeicoesJson  String
+  totalCalorias  String
+  totalProteinas String
+  totalGordura   String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  Avaliacao      Avaliacao[]
+
+  @@map("dieta")
+}
+
+model Treino {
+  id             Int           @id @default(autoincrement())
+  usuario        Usuario       @relation(fields: [usuarioId], references: [id])
+  usuarioId      Int
+  aluno          Aluno?        @relation(fields: [alunoId], references: [id])
+  alunoId        Int
+  especialista   Especialista? @relation(fields: [especialistaId], references: [id])
+  especialistaId Int
+  nome           String
+  descricao      String
+  tipo           String
+  PeriodoTreino  String
+  exerciciosJson String
+  intensidade    String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  Avaliacao      Avaliacao[]
+
+  @@map("treino")
+}
+
+model Avaliacao {
+  id             Int           @id @default(autoincrement())
+  usuario        Usuario       @relation(fields: [usuarioId], references: [id])
+  usuarioId      Int
+  aluno          Aluno?        @relation(fields: [alunoId], references: [id])
+  alunoId        Int
+  especialista   Especialista? @relation(fields: [especialistaId], references: [id])
+  especialistaId Int
+  dieta          Dieta?        @relation(fields: [dietaId], references: [id])
+  dietaId        Int
+  treino         Treino?       @relation(fields: [treinoId], references: [id])
+  treinoId       Int
+  nome           String
+  tipo           String
+  nota           Int
+  descricao      String
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@map("avaliacao")
+}

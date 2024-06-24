@@ -1,0 +1,32 @@
+{
+    "Nutricionista": {
+        "acessos": {
+            "dieta": [
+                "criar",
+                "editar",
+                "listar"
+            ],
+            "alunos": [
+                "listar"
+            ],
+            "feedback": [
+                "criar",
+                "editar",
+                "listar"
+            ],
+            "avaliacao": [
+                "criar",
+                "editar",
+                "listar"
+            ],
+            "perfil": {
+                "editar_proprio": [
+                    "nome",
+                    "documento",
+                    "contato",
+                    "email"
+                ]
+            }
+        }
+    }
+}

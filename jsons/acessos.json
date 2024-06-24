@@ -1,0 +1,95 @@
+{
+	"Aluno": {
+		"permissions": {
+			"dieta": [
+				"visualizar",
+				"marcar"
+			],
+			"treino": [
+				"visualizar",
+				"marcar"
+			],
+			"feedback": [
+				"visualizar",
+				"fornecer"
+			],
+			"avaliacao": [
+				"visualizar"
+			],
+			"perfil": {
+				"editar_proprio": [
+					"senha",
+					"usuario",
+					"nome",
+					"documento",
+					"contato",
+					"email"
+				]
+			}
+		}
+	},
+	"Treinador": {
+		"permissions": {
+			"dieta": [
+				"visualizar"
+			],
+			"treino": [
+				"visualizar",
+				"adicionar",
+				"editar"
+			],
+			"lista_alunos": [
+				"visualizar"
+			],
+			"perfil_aluno": [
+				"editar"
+			],
+			"feedback": [
+				"fornecer"
+			],
+			"perfil": {
+				"editar_proprio": [
+					"senha",
+					"usuario",
+					"nome",
+					"documento",
+					"contato",
+					"email"
+				]
+			}
+		}
+	},
+	"Nutricionista": {
+		"permissions": {
+			"dieta": [
+				"visualizar",
+				"adicionar",
+				"editar"
+			],
+			"lista_alunos": [
+				"visualizar"
+			],
+			"perfil_aluno": [
+				"editar"
+			],
+			"feedback": [
+				"fornecer"
+			],
+			"perfil": {
+				"editar_proprio": [
+					"senha",
+					"usuario",
+					"nome",
+					"documento",
+					"contato",
+					"email"
+				]
+			}
+		}
+	},
+	"Administrador": {
+		"permissions": {
+			"acesso_total": true
+		}
+	}
+}
